@@ -618,26 +618,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 54541100736464180, guid: 477573342fcd9b74f9cfebce4322d51f,
-        type: 2}
-      propertyPath: m_Interpolate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 54541100736464180, guid: 477573342fcd9b74f9cfebce4322d51f,
-        type: 2}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114561203664951254, guid: 477573342fcd9b74f9cfebce4322d51f,
-        type: 2}
-      propertyPath: FlapStrength
-      value: 3111
-      objectReference: {fileID: 0}
-    - target: {fileID: 114561203664951254, guid: 477573342fcd9b74f9cfebce4322d51f,
-        type: 2}
-      propertyPath: FallingStrBonus
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 477573342fcd9b74f9cfebce4322d51f, type: 2}
   m_IsPrefabAsset: 0
