@@ -8,34 +8,29 @@ public class DragonSpeed : MonoBehaviour
 	public float Decceleration;
 	public float TopSpeed;
 	public float Speed {get; private set;}
-	private bool _collided;
+	private float _collided;
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
-	
-	/// <summary>
-	/// OnCollisionStay is called once per frame for every collider/rigidbody
-	/// that is touching rigidbody/collider.
-	/// </summary>
-	/// <param name="other">The Collision data associated with this collision.</param>
 	void OnCollisionStay(Collision other)
 	{
-		_collided = true;
+		_collided = 0.2f;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (_collided)
+		print(_collided);
+		if (_collided > 0)
 		{
-			Speed = Mathf.Max(0,Speed -  Decceleration*Time.deltaTime);
+			Speed = Mathf.Max(0,Speed -  Decceleration * Time.deltaTime);
+			_collided -= Time.deltaTime;
 		}
 		else
 		{
-			Speed = Mathf.Min(TopSpeed, Speed + Accelleration*Time.deltaTime);
+			Speed = Mathf.Min(TopSpeed, Speed + Accelleration * Time.deltaTime);
 		}		
 		transform.position += Vector3.right * Speed * Time.deltaTime;
-		_collided = false;
 	}
 }

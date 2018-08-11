@@ -498,9 +498,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65359655473098932
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -598,6 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ccf6464568a024db51a4598078a98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlapStrength: 3300
-  FallingStrBonus: 0.31
+  FlapStrength: 3111
+  FallingStrBonus: 0.3
   Cooldown: 0.03
