@@ -8,5 +8,6 @@ public class Eatable : MonoBehaviour
 	
 	public void GetEaten() {
 		Debug.Log("Eaten for " + Value);
+        Destroy(gameObject, 1);
 	}
 }
