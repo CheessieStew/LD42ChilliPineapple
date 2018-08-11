@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
 	public float rotationSpeed = 0.8f;
+	public GameObject ArrowPrefab;
 
 	Transform bow;
 	Transform target;
@@ -13,6 +14,8 @@ public class Shooter : MonoBehaviour
 	{
 		bow = transform.Find("Bow");
 		target = GameObject.FindWithTag("Player").transform;
+
+		InvokeRepeating("ShootArrow", 1.5f, 2f);
 	}
 
 	void Update()
@@ -21,6 +24,20 @@ public class Shooter : MonoBehaviour
 			bow.localPosition,
 			target.position - transform.position,
 			rotationSpeed * Time.deltaTime,
-			0f);
+			0f
+		);
+	}
+
+	private void ShootArrow()
+	{
+		var arrowGO = Instantiate(
+			ArrowPrefab,
+			bow.position,
+			Quaternion.LookRotation(
+				target.position - transform.position,
+				Vector3.up
+			)
+		);
+		arrowGO.GetComponent<Arrow>().targetPosition = target.position;
 	}
 }
