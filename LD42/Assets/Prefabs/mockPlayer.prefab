@@ -127,6 +127,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349238605560544}
+  - component: {fileID: 54541100736464180}
+  - component: {fileID: 114561203664951254}
+  - component: {fileID: 114489658155620994}
   m_Layer: 0
   m_Name: mockPlayer
   m_TagString: Untagged
@@ -153,8 +156,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832474585976550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.336, y: 2.195, z: -10}
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: -40.7, y: 7.69, z: -11.335991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4461915353751390}
@@ -165,7 +168,7 @@ Transform:
   - {fileID: 4984417999546306}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4461915353751390
 Transform:
   m_ObjectHideFlags: 1
@@ -483,6 +486,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335480234819354}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54541100736464180
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832474585976550}
+  serializedVersion: 2
+  m_Mass: 155
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!65 &65359655473098932
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -555,3 +573,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114489658155620994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832474585976550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054d3617778daaa47a390241e5e38719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Accelleration: 40
+  Decceleration: 50
+  TopSpeed: 15
+--- !u!114 &114561203664951254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832474585976550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ccf6464568a024db51a4598078a98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlapStrength: 3300
+  FallingStrBonus: 0.31
+  Cooldown: 0.03
