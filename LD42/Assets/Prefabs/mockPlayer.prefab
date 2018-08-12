@@ -115,6 +115,9 @@ GameObject:
   - component: {fileID: 65587402128228884}
   - component: {fileID: 82524347572900884}
   - component: {fileID: 114546785510241054}
+  - component: {fileID: 114960629946091378}
+  - component: {fileID: 114355226368872280}
+  - component: {fileID: 114282929765287288}
   m_Layer: 0
   m_Name: mockPlayer
   m_TagString: Player
@@ -683,6 +686,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114282929765287288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889454041563252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5846fc633af14b54931428682dcbc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topScores: {fileID: 0}
+  currentScoreText: {fileID: 0}
+  nameInputField: {fileID: 0}
 --- !u!114 &114348943824781516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -697,6 +714,17 @@ MonoBehaviour:
   FlapStrength: 3111
   FallingStrBonus: 0.3
   Cooldown: 0.03
+--- !u!114 &114355226368872280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889454041563252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a710eaa07164140bc2303a0ae37f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114546785510241054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -723,3 +751,14 @@ MonoBehaviour:
   Accelleration: 40
   Decceleration: 50
   TopSpeed: 15
+--- !u!114 &114960629946091378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889454041563252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2237ba5bc71064a8c39c438263cf09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
