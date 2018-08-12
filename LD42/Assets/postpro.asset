@@ -29,7 +29,7 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
@@ -55,19 +55,19 @@ MonoBehaviour:
       reflection:
         blendType: 0
         reflectionQuality: 0
-        maxDistance: 180
-        iterationCount: 88
-        stepSize: 6
-        widthModifier: 10
-        reflectionBlur: 3.8
+        maxDistance: 300
+        iterationCount: 172
+        stepSize: 2
+        widthModifier: 6.3
+        reflectionBlur: 1
         reflectBackfaces: 0
       intensity:
-        reflectionMultiplier: 1.47
-        fadeDistance: 116
-        fresnelFade: 1
-        fresnelFadePower: 3.3
+        reflectionMultiplier: 1
+        fadeDistance: 333
+        fresnelFade: 0.42
+        fresnelFadePower: 3.8
       screenEdgeMask:
-        intensity: 0.12
+        intensity: 0.35
   depthOfField:
     m_Enabled: 0
     m_Settings:
