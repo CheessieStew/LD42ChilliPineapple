@@ -87,8 +87,6 @@ public class Arrow : MonoBehaviour {
 			targetPosition.z,
 			speedZ * Time.deltaTime
 		);
-		Debug.Log($"speedZ {speedZ}");
-		Debug.Log($"target: {targetPosition.z}");
 
 		float baseY = Mathf.Lerp(initialPosition.y, targetPosition.y, (nextX - x0) / distX);
 		float arc = arcHeight * (nextX - x0) * (nextX - x1) / (-0.25f * distX * distX);

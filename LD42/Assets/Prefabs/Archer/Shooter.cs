@@ -17,12 +17,16 @@ public class Shooter : MonoBehaviour {
 	}
 
 	void Update() {
-		bow.rotation = Quaternion.LookRotation(Vector3.RotateTowards(
+		var direction = target.position - transform.position;
+
+		direction = Quaternion.Euler(0, 180, 0) * direction;
+
+		bow.localPosition = Vector3.RotateTowards(
 			bow.localPosition,
-			target.position - transform.position,
+			direction,
 			rotationSpeed * Time.deltaTime,
 			0f
-		));
+		);
 	}
 
 	private void ShootArrow() {
