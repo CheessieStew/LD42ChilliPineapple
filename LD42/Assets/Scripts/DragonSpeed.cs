@@ -21,7 +21,6 @@ public class DragonSpeed : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-		print(_collided);
 		if (_collided > 0)
 		{
 			Speed = Mathf.Max(0,Speed -  Decceleration * Time.deltaTime);
