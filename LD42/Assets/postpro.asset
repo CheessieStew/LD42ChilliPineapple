@@ -50,22 +50,22 @@ MonoBehaviour:
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       reflection:
         blendType: 0
-        reflectionQuality: 2
-        maxDistance: 100
-        iterationCount: 256
-        stepSize: 3
-        widthModifier: 0.5
-        reflectionBlur: 1
-        reflectBackfaces: 0
+        reflectionQuality: 0
+        maxDistance: 300
+        iterationCount: 273
+        stepSize: 16
+        widthModifier: 10
+        reflectionBlur: 3.9
+        reflectBackfaces: 1
       intensity:
-        reflectionMultiplier: 1
-        fadeDistance: 100
+        reflectionMultiplier: 1.47
+        fadeDistance: 116
         fresnelFade: 1
-        fresnelFadePower: 1
+        fresnelFadePower: 3.3
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
@@ -100,14 +100,14 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.5
-        threshold: 1.1
-        softKnee: 0.37
-        radius: 2
+        intensity: 0.1
+        threshold: 1.9
+        softKnee: 0.08
+        radius: 2.5
         antiFlicker: 0
       lensDirt:
-        texture: {fileID: 0}
-        intensity: 3
+        texture: {fileID: 2800000, guid: 3884f7a2d04ffe8409ad9200b275896f, type: 3}
+        intensity: 3.17
   colorGrading:
     m_Enabled: 1
     m_Settings:
@@ -120,12 +120,12 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
+        postExposure: -0
         temperature: 0
         tint: 0
         hueShift: 0
         saturation: 1
-        contrast: 1
+        contrast: 1.47
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
