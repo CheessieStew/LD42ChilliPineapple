@@ -675,6 +675,26 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 65351679135449374, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65351679135449374, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 65351679135449374, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 65351679135449374, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 477573342fcd9b74f9cfebce4322d51f, type: 2}
   m_IsPrefabAsset: 0
@@ -1047,6 +1067,7 @@ MonoBehaviour:
   MaxHeight: 14
   MinHeight: 2.4
   Camera: {fileID: 534669904}
+  UpperCollider: {fileID: 0}
   FollowTarget: {fileID: 1760043088}
 --- !u!4 &1690994311 stripped
 Transform:

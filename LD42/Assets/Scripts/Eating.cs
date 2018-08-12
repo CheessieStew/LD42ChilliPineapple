@@ -3,47 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Eating : MonoBehaviour
-{
-	public Text scoreText;
+public class Eating : MonoBehaviour {
 	public AudioClip eatingSound;
 
 	private Eatable justEaten;
-	private int score;
 	private AudioSource source;
+	private PlayerScores playerScores;
 
 	// Use this for initialization
-	void Start()
-	{
+	void Awake() {
 		source = GetComponent<AudioSource>();
-		score = 0;
-		SetCountText();
+		playerScores = gameObject.GetComponent<PlayerScores>();
+		Debug.Assert(playerScores != null, "PlayerScores must be assigned.");
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
+	void Update() {
 
 	}
 
-	void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.CompareTag("Eatable"))
+	void OnTriggerEnter(Collider other) {
 		{
-			score++;
-			SetCountText();
+			if (other.gameObject.CompareTag("Eatable")) {
+				playerScores.UpdateCurrentScore();
 
-			justEaten = other.gameObject.GetComponent<Eatable>();
-			justEaten?.GetEaten();
+				justEaten = other.gameObject.GetComponent<Eatable>();
+				justEaten?.GetEaten();
 
-			source.PlayOneShot(eatingSound, 1.0f);
+				source.PlayOneShot(eatingSound, 1.0f);
+			}
 		}
-	}
-
-	void SetCountText()
-	{
-		if (scoreText == null)
-			return;
-		scoreText.text = "Score: " + score.ToString();
 	}
 }
