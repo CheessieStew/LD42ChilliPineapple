@@ -54,6 +54,10 @@ public class Arrow : MonoBehaviour {
 
 			if (Vector3.Distance(pos, targetPosition) < 2) {
 				state = ProjectileState.StartsFalling;
+
+				if (transform.position == lastPosition) {
+					Destroy(this);
+				}
 				lastPosition = transform.position;
 			}
 
