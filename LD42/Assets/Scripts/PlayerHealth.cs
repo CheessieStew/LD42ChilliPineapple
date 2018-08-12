@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Arrow")
+        if (other.GameObject.CompareTag("Projectile"))
         {
             health--;
             SetHealthText();
