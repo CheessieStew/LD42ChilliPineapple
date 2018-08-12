@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour {
-	public int ChunkWidth = 98;
-
-	public GameObject ChunkPrefab;
+	public DragonsPath ChunkTemplate;
 
 	private Transform _chunks;
 
@@ -17,7 +15,7 @@ public class WorldBuilder : MonoBehaviour {
 			"WorldBuilder must have a Chunks child with starting chunks."
 		);
 		Debug.Assert(
-			ChunkPrefab != null,
+			ChunkTemplate != null,
 			"ChunkPrefab can't be empty."
 		);
 	}
@@ -28,13 +26,13 @@ public class WorldBuilder : MonoBehaviour {
 
 	void AddNewChunk() {
 		var last = _chunks.GetChild(_chunks.childCount - 1);
-		var pos = last.position.x + ChunkWidth;
 
 		GameObject newChunk = Instantiate<GameObject>(
-			original: ChunkPrefab,
+			original: ChunkTemplate.gameObject,
 			parent: _chunks
 		);
-		newChunk.transform.localPosition = new Vector3(pos, 0, 0);
+		newChunk.transform.localPosition =
+			new Vector3(ChunkTemplate.Length, 0, 0) + last.localPosition;
 	}
 
 	public void OnProgress() {

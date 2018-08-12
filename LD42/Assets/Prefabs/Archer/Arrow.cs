@@ -41,6 +41,8 @@ public class Arrow : MonoBehaviour {
 		distX = Mathf.Abs(x1 - x0);
 		distZ = Mathf.Abs(targetPosition.z - initialPosition.z);
 		speedZ = speedX * (distZ / distX);
+
+		Destroy(gameObject, 30f);
 	}
 
 	void Update() {
