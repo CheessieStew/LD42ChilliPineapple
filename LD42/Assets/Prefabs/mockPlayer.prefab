@@ -502,7 +502,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 122
+  m_Constraints: 120
   m_CollisionDetection: 1
 --- !u!65 &65135311336146478
 BoxCollider:
@@ -708,7 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd08b8e74b954268b535be0aa53a203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
   eatingSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
 --- !u!114 &114613816931742456
 MonoBehaviour:

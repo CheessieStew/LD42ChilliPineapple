@@ -8,12 +8,12 @@ public class DragonSpeed : MonoBehaviour
 	public float Accelleration;
 	public float Decceleration;
 	public float TopSpeed;
-	public float Speed { get; private set; }
 	private float _collided;
+	private Rigidbody _rigidbody;
 	// Use this for initialization
 	void Start()
 	{
-
+		_rigidbody = GetComponent<Rigidbody>();
 	}
 
 	void OnCollisionStay(Collision other)
@@ -26,13 +26,16 @@ public class DragonSpeed : MonoBehaviour
 	{
 		if (_collided > 0)
 		{
-			Speed = Mathf.Max(0, Speed - Decceleration * Time.deltaTime);
+			if (_rigidbody.velocity.x > 0)
+			{
+				_rigidbody.AddForce(Vector3.right * Decceleration, ForceMode.Acceleration);
+			}
 			_collided -= Time.deltaTime;
 		}
-		else
+		else if (_rigidbody.velocity.x < TopSpeed)
 		{
-			Speed = Mathf.Min(TopSpeed, Speed + Accelleration * Time.deltaTime);
+			_rigidbody.AddForce(Vector3.right * Accelleration, ForceMode.Acceleration);
 		}
-		transform.position += Vector3.right * Speed * Time.deltaTime;
+		
 	}
 }
