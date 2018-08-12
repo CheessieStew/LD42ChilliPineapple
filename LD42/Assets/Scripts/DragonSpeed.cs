@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DragonSpeed : MonoBehaviour
@@ -17,6 +18,7 @@ public class DragonSpeed : MonoBehaviour
 
 	void OnCollisionStay(Collision other)
 	{
+		if (other.contacts.Any(cp =>cp.normal.y > 0))
 		_collided = 0.2f;
 	}
 
