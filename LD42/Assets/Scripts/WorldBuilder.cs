@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
 {
-	public GameObject ChunkPrefab;
+	const int CHUNK_WIDTH = 98;
 
+	public GameObject ChunkPrefab;
+	public Transform InitialChunkTransform;
+
+	void Awake()
+	{
+		Debug.Assert(
+			ChunkPrefab != null,
+			"ChunkPrefab can't be empty."
+		);
+		Debug.Assert(
+			InitialChunkTransform != null,
+			"InitialChunkTransform can't be empty."
+		);
+	}
 }
