@@ -32,4 +32,5 @@ public class DragonSpeed : MonoBehaviour
 		}		
 		transform.position += Vector3.right * Speed * Time.deltaTime;
 	}
+
 }

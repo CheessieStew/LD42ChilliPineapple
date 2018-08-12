@@ -8,6 +8,7 @@ public class SickCamera : MonoBehaviour {
 	public float MaxHeight;
 	public float MinHeight;
 	public Camera Camera;
+	public Transform UpperCollider;
 	public Transform FollowTarget;
 	// Use this for initialization
 	void Start () 
@@ -33,4 +34,12 @@ public class SickCamera : MonoBehaviour {
 				//(toTarget.sqrMagnitude > toFly.sqrMagnitude ? toFly : toTarget);
 		}
 	}
+
+	 /// <summary>
+	 /// Callback to draw gizmos that are pickable and always drawn.
+	 /// </summary>
+	 void OnDrawGizmos()
+	 {
+		 Gizmos.DrawWireCube(UpperCollider.position + new Vector3(300,MaxHeight-transform.position.y,0),new Vector3(600,1,50));
+	 }
 }
