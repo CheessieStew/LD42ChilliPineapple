@@ -10,8 +10,7 @@ public class Arrow : MonoBehaviour {
 	}
 
 	public Vector3 targetPosition;
-	public float speed = 10;
-	public float arcHeight = 1;
+	public float speedX = 20;
 
 	ProjectileState state = ProjectileState.Flying;
 	Vector3 initialPosition;
@@ -19,9 +18,29 @@ public class Arrow : MonoBehaviour {
 
 	new Rigidbody rigidbody;
 
+	float arcHeight = 1;
+	float x0;
+	float x1;
+	float distX;
+	float distZ;
+	float speedZ;
+
 	void Start() {
 		rigidbody = gameObject.GetComponent<Rigidbody>();
 		initialPosition = transform.position;
+
+		arcHeight = Mathf.Sqrt(
+			Mathf.Abs(Vector2.Distance(
+				new Vector2(initialPosition.x, initialPosition.z),
+				new Vector2(targetPosition.x, targetPosition.z)
+			) - Mathf.Abs(transform.position.y - transform.position.y))
+		);
+
+		x0 = initialPosition.x;
+		x1 = targetPosition.x;
+		distX = Mathf.Abs(x1 - x0);
+		distZ = Mathf.Abs(targetPosition.z - initialPosition.z);
+		speedZ = speedX * (distZ / distX);
 	}
 
 	void Update() {
@@ -31,7 +50,7 @@ public class Arrow : MonoBehaviour {
 			transform.rotation = flightResult.Item1;
 			var pos = flightResult.Item2;
 
-			if (pos == targetPosition) {
+			if (Vector3.Distance(pos, targetPosition) < 2) {
 				state = ProjectileState.StartsFalling;
 				lastPosition = transform.position;
 			}
@@ -44,14 +63,12 @@ public class Arrow : MonoBehaviour {
 			rigidbody.velocity = (transform.position - lastPosition) / Time.deltaTime;
 			this.enabled = false;
 			Destroy(this);
-			Destroy(gameObject, 8f);
+			Destroy(gameObject, 12f);
 
 			break;
 
 		case ProjectileState.Stuck:
 			// to ewentualnie jak bedzie smok, zobaczymy czy chcemy żeby się wbijały
-			Destroy(gameObject);
-
 			break;
 
 		default:
@@ -60,23 +77,21 @@ public class Arrow : MonoBehaviour {
 	}
 
 	System.Tuple<Quaternion, Vector3> Fly() {
-		float z0 = initialPosition.z;
-		float z1 = targetPosition.z;
-
-		float dist = z1 - z0;
 		float nextX = Mathf.MoveTowards(
 			transform.position.x,
-			targetPosition.x,
-			speed * Time.deltaTime
+			x1,
+			speedX * Time.deltaTime
 		);
 		float nextZ = Mathf.MoveTowards(
 			transform.position.z,
-			z1,
-			speed * Time.deltaTime
+			targetPosition.z,
+			speedZ * Time.deltaTime
 		);
+		Debug.Log($"speedZ {speedZ}");
+		Debug.Log($"target: {targetPosition.z}");
 
-		float baseY = Mathf.Lerp(initialPosition.y, targetPosition.y, (nextZ - z0) / dist);
-		float arc = arcHeight * (nextZ - z0) * (nextZ - z1) / (-0.25f * dist * dist);
+		float baseY = Mathf.Lerp(initialPosition.y, targetPosition.y, (nextX - x0) / distX);
+		float arc = arcHeight * (nextX - x0) * (nextX - x1) / (-0.25f * distX * distX);
 		var nextPos = new Vector3(nextX, baseY + arc, nextZ);
 
 		return new System.Tuple<Quaternion, Vector3>(
