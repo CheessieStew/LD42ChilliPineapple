@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
 {
-	const int CHUNK_WIDTH = 98;
+	public int ChunkWidth = 98;
 
 	public GameObject ChunkPrefab;
 	public Transform InitialChunkTransform;

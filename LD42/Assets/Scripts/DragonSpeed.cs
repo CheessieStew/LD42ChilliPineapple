@@ -22,7 +22,6 @@ public class DragonSpeed : MonoBehaviour
 
 	void Update()
 	{
-		//print(_collided);
 		if (_collided > 0)
 		{
 			Speed = Mathf.Max(0, Speed - Decceleration * Time.deltaTime);

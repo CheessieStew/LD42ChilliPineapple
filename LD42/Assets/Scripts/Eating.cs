@@ -37,7 +37,7 @@ public class Eating : MonoBehaviour
 
 
             justEaten = other.gameObject.GetComponent<Eatable>();
-            justEaten.GetEaten();
+            justEaten?.GetEaten();
 
             source.PlayOneShot(eatingSound, 1.0f);
 		}
@@ -45,6 +45,8 @@ public class Eating : MonoBehaviour
 
 	void SetCountText()
 	{
+		if(scoreText == null)
+			return;
 		scoreText.text = "Score: " + score.ToString();
 	}
 }
