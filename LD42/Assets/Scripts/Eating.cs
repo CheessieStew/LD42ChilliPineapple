@@ -4,18 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Eating : MonoBehaviour {
-	public Text scoreText;
 	public AudioClip eatingSound;
 
 	private Eatable justEaten;
-	private int score;
 	private AudioSource source;
+	private PlayerScores playerScores;
 
 	// Use this for initialization
 	void Start() {
 		source = GetComponent<AudioSource>();
-		score = 0;
-		SetCountText();
+		playerScores = gameObject.AddComponent<PlayerScores>();
 	}
 
 	// Update is called once per frame
@@ -24,20 +22,15 @@ public class Eating : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag("Eatable")) {
-			score++;
-			SetCountText();
+		{
+			if (other.gameObject.CompareTag("Eatable")) {
+				playerScores.UpdateCurrentScore();
 
-			justEaten = other.gameObject.GetComponent<Eatable>();
-			justEaten?.GetEaten();
+				justEaten = other.gameObject.GetComponent<Eatable>();
+				justEaten?.GetEaten();
 
-			source.PlayOneShot(eatingSound, 1.0f);
+				source.PlayOneShot(eatingSound, 1.0f);
+			}
 		}
-	}
-
-	void SetCountText() {
-		if (scoreText == null)
-			return;
-		scoreText.text = "Score: " + score.ToString();
 	}
 }
