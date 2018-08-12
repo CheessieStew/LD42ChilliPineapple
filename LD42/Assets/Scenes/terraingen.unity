@@ -807,6 +807,16 @@ Prefab:
       propertyPath: nameInputField
       value: 
       objectReference: {fileID: 542282888}
+    - target: {fileID: 65587402128228884, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 65587402128228884, guid: 477573342fcd9b74f9cfebce4322d51f,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 477573342fcd9b74f9cfebce4322d51f, type: 2}
   m_IsPrefabAsset: 0
