@@ -34,10 +34,8 @@ namespace API {
         public string ToString() {
             var scoresString = "";
             foreach (UserScore score in scores) {
-                Debug.Log(score.player);
                 scoresString += score.ToString() + "\n";
             }
-            Debug.Log(scoresString);
             return scoresString;
         }
         public List<UserScore> scores;

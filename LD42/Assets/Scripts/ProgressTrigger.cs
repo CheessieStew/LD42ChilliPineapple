@@ -11,14 +11,14 @@ public class ProgressTrigger : MonoBehaviour {
 
 	void OnDrawGizmosSelected() {
 		Gizmos.color = new Color(0.6f, 0.8f, 0, 0.2F);
-		Gizmos.DrawCube(transform.position + new Vector3(0, 0, 0), new Vector3(30, 50, 30));
+		Gizmos.DrawCube(transform.position + new Vector3(0, 0, 0), new Vector3(30, 50, 60));
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Player")) {
 			Debug.Log("collided!");
 			WorldBuilder.OnProgress();
-			transform.position += new Vector3(WorldBuilder.ChunkWidth, 0, 0);
+			transform.position += new Vector3(WorldBuilder.ChunkTemplate.Length, 0, 0);
 		}
 	}
 }
