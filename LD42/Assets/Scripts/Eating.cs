@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Eating : MonoBehaviour
-{
+public class Eating : MonoBehaviour {
 	public Text scoreText;
 	public AudioClip eatingSound;
 
@@ -13,23 +12,19 @@ public class Eating : MonoBehaviour
 	private AudioSource source;
 
 	// Use this for initialization
-	void Start()
-	{
+	void Start() {
 		source = GetComponent<AudioSource>();
 		score = 0;
 		SetCountText();
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
+	void Update() {
 
 	}
 
-	void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.CompareTag("Eatable"))
-		{
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag("Eatable")) {
 			score++;
 			SetCountText();
 
@@ -40,8 +35,7 @@ public class Eating : MonoBehaviour
 		}
 	}
 
-	void SetCountText()
-	{
+	void SetCountText() {
 		if (scoreText == null)
 			return;
 		scoreText.text = "Score: " + score.ToString();
