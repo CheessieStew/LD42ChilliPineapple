@@ -11,9 +11,10 @@ public class Eating : MonoBehaviour {
 	private PlayerScores playerScores;
 
 	// Use this for initialization
-	void Start() {
+	void Awake() {
 		source = GetComponent<AudioSource>();
-		playerScores = gameObject.AddComponent<PlayerScores>();
+		playerScores = gameObject.GetComponent<PlayerScores>();
+		Debug.Assert(playerScores != null, "PlayerScores must be assigned.");
 	}
 
 	// Update is called once per frame
