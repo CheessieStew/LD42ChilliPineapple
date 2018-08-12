@@ -19,19 +19,35 @@ namespace API
             created_at = (int)Time.time;
         }
 
-        public string ToString()
+        public string ToJSONString()
         {
             return "{\"player\": \"" + player + "\", \"value\": " + value + ", \"created_at\": " + created_at + "}";
         }
 
-        public string player { get; set; }
-        public int value { get; set; }
-        public int created_at { get; set; }
+        public string ToString()
+        {
+            return player + ": " + value;
+        }
+
+        public string player;
+        public int value;
+        public int created_at;
     }
 
     [Serializable]
     public class Scores
     {
+        public string ToString()
+        {
+            var scoresString = "";
+            foreach (UserScore score in scores) 
+            {
+                Debug.Log(score.player);
+                scoresString += score.ToString() + "\n";           
+            }
+            Debug.Log(scoresString);
+            return scoresString;
+        }
         public List<UserScore> scores;
     }
 
@@ -49,13 +65,13 @@ namespace API
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string jsonResponse = reader.ReadToEnd();
             Scores scores = JsonUtility.FromJson<Scores>("{\"scores\": " + jsonResponse + "}");
+            Debug.Log(jsonResponse);
             return scores;
         }
 
         IEnumerator HandleCreateOrUpdate(UserScore score)
         {
-            var json_data = score.ToString();
-            UnityWebRequest www = UnityWebRequest.Put("https://snake-api.glitch.me/v1/scores", score.ToString());
+            UnityWebRequest www = UnityWebRequest.Put("https://snake-api.glitch.me/v1/scores", score.ToJSONString());
             www.SetRequestHeader("Content-Type", "application/json");
             www.chunkedTransfer = false;
             www.method = "POST";
