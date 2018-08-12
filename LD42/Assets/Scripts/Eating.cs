@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Eating : MonoBehaviour {
 	public AudioClip eatingSound;
 
-	private Eatable justEaten;
 	private AudioSource source;
 	private PlayerScores playerScores;
 
@@ -17,19 +16,14 @@ public class Eating : MonoBehaviour {
 		Debug.Assert(playerScores != null, "PlayerScores must be assigned.");
 	}
 
-	// Update is called once per frame
-	void Update() {
-
-	}
-
 	void OnTriggerEnter(Collider other) {
 		{
 			if (other.gameObject.CompareTag("Eatable")) {
-				playerScores.UpdateCurrentScore();
-
-				justEaten = other.gameObject.GetComponent<Eatable>();
-				justEaten?.GetEaten();
-
+				var eatable = other.gameObject.GetComponent<Eatable>();
+				if (eatable) {
+					eatable.GetEaten();
+					playerScores.Score += eatable.Value;
+				}
 				source.PlayOneShot(eatingSound, 1.0f);
 			}
 		}
