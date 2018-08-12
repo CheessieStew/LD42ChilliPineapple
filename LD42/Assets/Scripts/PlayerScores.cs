@@ -13,6 +13,7 @@ public class PlayerScores : MonoBehaviour {
     private ScoresController scoresCtrl;
     private int score;
     private string name;
+    private bool showTopScores;
 
     void Start() {
         scoresCtrl = gameObject.GetComponent<ScoresController>();
@@ -26,13 +27,30 @@ public class PlayerScores : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
             print("E key was pressed");
-            topScores.text = scoresCtrl.GetUserScores().ToString();
+            if (showTopScores) HideTopScores(); 
+            else ShowTopScores();
         }
-        if (Input.GetKeyDown(KeyCode.Return) && nameInputField.text != "") {
-            print("Enter was pressed");
-            var userScore = new UserScore(nameInputField.text, score);
-            scoresCtrl.CreateOrUpdateUserScore(userScore);
+    }
+
+    public void ShowTopScores() {
+        try 
+        {
+            var scores = scoresCtrl.GetUserScores().ToString();
+			topScores.text = scoresCtrl.GetUserScores().ToString();      
         }
+        catch (System.Exception ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
+    public void HideTopScores() {
+        topScores.text = "";
+    }
+
+    public void SendUserScore() {
+		var userScore = new UserScore(nameInputField.text, score);
+		scoresCtrl.CreateOrUpdateUserScore(userScore);
     }
 
     public void UpdateCurrentScore() {
