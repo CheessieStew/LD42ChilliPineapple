@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Eating : MonoBehaviour {
-	public AudioClip eatingSound;
+namespace FlappyDrake {
+	public class Eating : MonoBehaviour {
+		public AudioClip eatingSound;
 
-	private AudioSource source;
-	private PlayerScores playerScores;
+		private AudioSource source;
+		private PlayerScores playerScores;
 
-	// Use this for initialization
-	void Awake() {
-		source = GetComponent<AudioSource>();
-		playerScores = gameObject.GetComponent<PlayerScores>();
-		Debug.Assert(playerScores != null, "PlayerScores must be assigned.");
-	}
+		void Awake() {
+			source = GetComponent<AudioSource>();
+			playerScores = gameObject.GetComponent<PlayerScores>();
+			Debug.Assert(playerScores != null, "PlayerScores must be assigned.");
+		}
 
-	void OnTriggerEnter(Collider other) {
-		{
-			if (other.gameObject.CompareTag("Eatable")) {
-				var eatable = other.gameObject.GetComponent<Eatable>();
-				if (eatable) {
-					eatable.GetEaten();
-					playerScores.Score += eatable.Value;
+		void OnTriggerEnter(Collider other) {
+			{
+				if (other.gameObject.CompareTag("Eatable")) {
+					var eatable = other.gameObject.GetComponent<Eatable>();
+					if (eatable) {
+						eatable.GetEaten();
+						playerScores.Score += eatable.Value;
+					}
+					source.PlayOneShot(eatingSound, 1.0f);
 				}
-				source.PlayOneShot(eatingSound, 1.0f);
 			}
 		}
 	}
